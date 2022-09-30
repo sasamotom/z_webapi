@@ -6,11 +6,35 @@ html(lang="ja")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="format-detection", content="telephone=no")
     meta(name="description", content="")
-    title Document
+    title WEB API PRACTICE
+    link(rel="icon" href="/assets/images/favicon.ico" sizes="any")
+    link(rel="icon" href="/assets/images/icon.svg" type="image/svg+xml")
+    link(rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png")
+    link(rel="manifest" href="/assets/images/manifest.webmanifest")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;900&family=Anton&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="/assets/css/app.css")
   body
     .wrapper
-      include ./includes/_samples/_header
-      include ./includes/_samples/_main
+      //- アンカーリンク
+      nav
+        ul.ancLinks#ancLinks
+      //- メインコンテンツ
+      main.main#main
+        include ./includes/_weather
+        include ./includes/_time
+        include ./includes/_weather
+        include ./includes/_time
+        include ./includes/_weather
+        include ./includes/_time
+      //- モーダル
+      .modal#modal(aria-hidden="true")
+        .modal_overlay(tabindex="-1" data-micromodal-close)
+          .modal_container(role="dialog" aria-modal="true" aria-labelledby="modal")
+            .modal_content#modal_content
+              //- ここにモーダルの中身が入る
+            .modal_closeBtn#modal_closeBtn(aria-label="Close modal" data-micromodal-close)
+      .modal_trigger#modal_trigger(data-micromodal-trigger="modal")
 
     script(src="/assets/js/app.js")

@@ -2,16 +2,33 @@
 
 .btn {
   margin-top: 2em;
-  @include fontSize(16, 14);
   a,
   .btn_txt {
+    position: relative;
     display: inline-block;
-    padding: 0.5em 1em;
+    padding: 0.4em 2em;
+    font-family: $fontEn;
+    font-size: 1.8rem;
     cursor: pointer;
-    background: #eee;
+    border: 4px solid $colorText;
     transition: 0.3s;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: #fff;
+      transition: 0.3s;
+    }
     @include hover() {
-      background: #aea;
+      &::before {
+        top: 1.2rem;
+        left: 1rem;
+      }
     }
   }
 }

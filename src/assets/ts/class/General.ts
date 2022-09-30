@@ -36,7 +36,7 @@ export class General {
     const ancLinks = document.querySelectorAll('a[href^="#"]');
     ancLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
-        const href =(<Element>e!.target!).getAttribute('href');
+        const href =link.getAttribute('href');
         let target;   // 飛び先
         if (href === '#') {
           target = document.querySelector('html');

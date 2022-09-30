@@ -1,5 +1,12 @@
 @use "../abstracts" as *;
 
+// トリガー内のモーダルコンテンツは非表示
+.modalTrigger {
+  .modalContent {
+    display: none;
+  }
+}
+
 // モーダル
 .modal {
   display: none;
@@ -13,27 +20,49 @@
     bottom: 0;
     left: 0;
     z-index: 1000;
-    padding: 8rem 1.5rem 2rem;
+    padding: 5rem;
     overflow: hidden;
-    background: #fff;
-    @include mq() {
-      padding-top: 5rem;
-    }
+    background: rgba($colorText, 0.5);
   }
   &_container {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
     max-width: 1920px;
-    margin: 0 auto;
+    height: 80%;
+    overflow: auto;
+    background: #fff;
+    border: 4px solid $colorText;
+    transform: translate(-50%, -50%);
+    @include mq() {
+      width: 90%;
+      height: 90%;
+    }
+  }
+  &_content {
+    min-height: 100%;
+    padding: 8rem;
+    @include mq() {
+      padding: 5rem 4rem;
+    }
+    .modalTtl {
+      margin-bottom: 1em;
+      font-size: 2.4rem;
+      font-weight: 900;
+    }
+    * + .modalTtl {
+      margin-top: 2em;
+    }
   }
   &_closeBtn {
     position: absolute;
-    top: -5rem;
-    right: 0;
-    width: 4rem;
-    height: 4rem;
+    top: 2rem;
+    right: 2rem;
+    width: 7rem;
+    height: 7rem;
     cursor: pointer;
     @include mq() {
-      top: -4rem;
       width: 2.8rem;
       height: 2.8rem;
     }
@@ -43,8 +72,8 @@
       top: 50%;
       left: 50%;
       display: block;
-      width: 5.3rem;
-      height: 1px;
+      width: 7rem;
+      height: 0.4rem;
       content: "";
       background: $colorText;
       @include mq() {
@@ -87,11 +116,4 @@
   to {
     opacity: 0;
   }
-}
-.modal_content p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  background: #eee;
 }

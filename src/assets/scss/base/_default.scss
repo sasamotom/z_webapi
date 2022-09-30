@@ -23,6 +23,7 @@ body {
   width: 100%;
   font-family: $baseFontFamily;
   font-size: 1.6rem;
+  font-weight: 500;
   line-height: 1;
   color: $colorText;
   word-wrap: break-word;
@@ -32,6 +33,9 @@ body {
 p {
   line-height: 1.5;
   letter-spacing: 0.05em;
+  + p {
+    margin-top: 1em;
+  }
 }
 
 img {

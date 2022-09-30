@@ -128,3 +128,20 @@ $spMaxPx: 768; // SPサイズの最大ピクセル数
     font-size: clamp(($spSize * 1px), getSpVw($spSize), ($pcSize * 1px));
   }
 }
+
+// --------------------------------------------
+// 機能：色を設定する
+// 引数：$mainColor   メインの色（背景色）
+//      $subColor    装飾の色（影の色）
+//      $ttlLeftPos  タイトルのleftの値
+// --------------------------------------------
+@mixin setColor($mainColor, $subColor, $ttlLeftPos) {
+  background: $mainColor;
+  .secCard_ttl {
+    left: $ttlLeftPos;
+    text-shadow: 2rem 2.4rem $subColor;
+  }
+  .apiContainer {
+    box-shadow: 3rem 3.6rem 0px 0px $subColor;
+  }
+}

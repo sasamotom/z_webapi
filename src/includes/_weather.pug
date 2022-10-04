@@ -2,12 +2,48 @@ section.secCard.secWeather
   h2.secCard_ttl WEATHER
   .textContainer
     .textContainer_inner
-      h3.textContainer_ttl なんちゃらなんちゃらAPI
-      p Reprehenderit veniam tempor aliquip veniam elit in occaecat irure ipsum deserunt ut esse eu deserunt. Veniam velit nulla do consequat anim ea in occaecat. Incididunt laborum Lorem sunt ut sit reprehenderit sit quis commodo eiusmod. Mollit sunt excepteur cillum elit labore ut irure. Culpa magna occaecat amet dolore. Ipsum tempor sint laborum nulla do laboris eiusmod do enim. Irure irure tempor magna aute voluptate.
-      p Ex occaecat ullamco ullamco id nulla. In amet tempor Lorem officia. Nostrud in culpa ex ea laboris laborum Lorem elit eu non ad aliqua proident sit. Reprehenderit nostrud velit laboris commodo irure esse culpa. Anim irure adipisicing aliquip ullamco non amet eiusmod sint enim reprehenderit nostrud ad. Qui do duis ullamco et est reprehenderit fugiat ullamco cillum nisi.
+      h3.textContainer_ttl 気象庁JSON & Open-Meteo
+      p 天気情報を取得したい場所の情報（地点を示すコードや経度・緯度）や取得したい情報を示すパラメータが分かれば簡単にデータを取得できる。
+      h3.textContainer_ttl Open Weather
+      p APIキーの取得が必要。無料版だと一部機能が使えない。<br>こちらも天気情報を取得したい場所の情報（地点名や経度・緯度）や取得したい情報を示すパラメータが分かれば簡単にデータを取得できる。
+      h3.textContainer_ttl 【まとめ】天気関連のAPI
+      p 地域と取得したい情報を指定することで目的としたデータを取得できるものが多い印象。<br>どれも天気コードが異なっており（それもかなり多くのコードが定義されている）、それぞれのコードに対応したアイコンを用意するのは大変。
       div.btn.modalTrigger: span.btn_txt MORE
         .modalContent
-          p モーダルの中身
+          h3.modalTtl 気象庁JSON
+          p APIとして用意されているものではなく、気象庁のJSONをAPI代わりに使用しているだけ。<br>データ構造がわかりづらいが、日本国内の天気予報精度が高いので好み。また、日本語なのでテキストを表示するだけの場合は非常に有効。<br>3日目の天気情報が取得できない（用意されていない？）時がある。
+          p: a(href="https://anko.education/apps/weather_api", target="_blank", rel="noopener noreferrer") 参考ページ
+          h3.modalTtl Open-Meteo
+          p 大変気楽に使用できるが、指定した座標ピッタリの情報は得られず、近い箇所のデータが返ってくるため、精度が低く感じる。
+          p: a(href="https://paiza.hatenablog.com/entry/2021/11/04/130000", target="_blank", rel="noopener noreferrer") 参考ページ
+          h3.modalTtl Open Weather
+          p APIキーは簡単に取得できた。ドキュメントもしっかりしていて、取得したいデータが無料版で使用できるのならばとても良いと感じた。
+          p
+            a(href="https://yuukiyg.hatenablog.jp/entry/2019/11/17/182410", target="_blank", rel="noopener noreferrer") 参考ページ
+            br
+            a(href="https://openweathermap.org/current", target="_blank", rel="noopener noreferrer") APIの仕様
+
   .apiContainer
     .apiContainer_inner
-      p ここにAPIそれぞれの内容
+      .swiper
+        .swiper-wrapper
+          .swiper-slide
+            h3.apiContainer_ttl 気象庁JSON
+              span SAPPORO
+            .weatherDataContainer.-jma#jmaData
+          .swiper-slide
+            h3.apiContainer_ttl Open-Meteo
+              span NEAR SAPPORO
+            .weatherDataContainer.-openMeteo#openMeteoData
+          .swiper-slide
+            h3.apiContainer_ttl Open Weather
+              span SAPPORO - Current Weather
+            .weatherDataContainer.-openWeather#openWeatherData
+            //- dl.weatherInfo
+            //-   dt.weatherInfo_date 10/1
+            //-   dd.weatherInfo_code(data-wearhercode=61) 61
+            //-   dd.weatherInfo_max 22
+            //-   dd.weatherInfo_min 16
+
+        .swiper-button-prev
+        .swiper-button-next

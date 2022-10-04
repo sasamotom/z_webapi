@@ -47,12 +47,20 @@
       padding: 5rem 4rem;
     }
     .modalTtl {
+      @include fontSize(2.4, 16);
       margin-bottom: 1em;
       font-size: 2.4rem;
       font-weight: 900;
     }
     * + .modalTtl {
       margin-top: 2em;
+    }
+    p {
+      @include fontSize(16, 12);
+      a {
+        color: #888;
+        text-decoration: underline;
+      }
     }
   }
   &_closeBtn {

@@ -114,7 +114,7 @@ $spMaxPx: 768; // SPサイズの最大ピクセル数
 //      $spSize    SP版のフォントサイズ
 // 注意：getPcVw()とgetSpVw()関数の$viewportの値をデザインデータに合わせること
 // --------------------------------------------
-@function getPcVw($px, $viewport: 1100) {
+@function getPcVw($px, $viewport: 1000) {
   $vw: math.div(100, $viewport); // 1pxあたりのvw数
   @return $vw * $px * 1vw; // 1pxあたりのvw数(vw/px) * フォントサイズ(px)
 }
@@ -123,9 +123,18 @@ $spMaxPx: 768; // SPサイズの最大ピクセル数
   @return $vw * $px * 1vw;
 }
 @mixin fontSize($pcSize, $spSize) {
-  font-size: clamp(($spSize * 1px), getPcVw($pcSize), ($pcSize * 1px));
+  // font-size: clamp(
+  //   ($spSize / 10 * 1rem),
+  //   getPcVw($pcSize),
+  //   ($pcSize / 10 * 1rem)
+  // );
+  font-size: min(getPcVw($pcSize), ($pcSize / 10 * 1rem));
   @include mq(sp) {
-    font-size: clamp(($spSize * 1px), getSpVw($spSize), ($pcSize * 1px));
+    font-size: clamp(
+      ($spSize / 10 * 1rem),
+      getSpVw($spSize),
+      ($pcSize / 10 * 1rem)
+    );
   }
 }
 

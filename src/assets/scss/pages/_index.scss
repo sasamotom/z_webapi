@@ -68,6 +68,7 @@ html {
     padding: 5rem 5%;
   }
   > * {
+    flex-grow: 0;
     max-width: 700px;
   }
   &:nth-of-type(5n + 1) {
@@ -139,7 +140,7 @@ html {
   &_ttl {
     position: absolute;
     bottom: -0.1em;
-    z-index: 1;
+    z-index: 2;
     font-family: $fontEn;
     font-size: min(20vh, 14vw);
     color: #fff;
@@ -153,7 +154,7 @@ html {
   .textContainer {
     position: relative;
     z-index: 3;
-    width: 50%;
+    width: 40%;
     height: 100%;
     @include mq() {
       width: 100%;
@@ -165,14 +166,20 @@ html {
       overflow-y: auto;
     }
     &_ttl {
-      margin-bottom: 1.5em;
-      font-size: 2.4rem;
+      @include fontSize(24, 20);
+      margin-bottom: 1em;
       font-weight: 900;
+    }
+    p {
+      @include fontSize(16, 14);
+    }
+    * + .textContainer_ttl {
+      margin-top: 2em;
     }
   }
   .apiContainer {
     position: relative;
-    width: min(100vh - 15rem, 600px);
+    width: 58%;
     aspect-ratio: 1;
     background: #fff;
     border: 4px solid $colorText;
@@ -193,8 +200,169 @@ html {
     }
     &_inner {
       height: 100%;
-      padding: 1em;
       overflow-y: auto;
+    }
+    &_ttl {
+      @include fontSize(34, 24);
+      position: relative;
+      margin-bottom: 1em;
+      font-family: $fontEn;
+      font-weight: 900;
+      span {
+        @include fontSize(22, 16);
+        position: absolute;
+        top: 80%;
+        left: 10%;
+        font-family: $fontEn;
+        color: #fff;
+        -webkit-text-stroke: 1px $colorText;
+      }
+    }
+  }
+}
+
+// ここから各APIに対応したスタイル
+.secWeather {
+  .weatherDataContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 4rem) clamp(1rem, 2vw, 2rem);
+    align-items: flex-start;
+    justify-content: center;
+    &.-openMeteo {
+      .weatherInfo {
+        @include mq() {
+          width: 26%;
+          &:nth-child(n + 6) {
+            display: none;
+          }
+        }
+        &:nth-child(1),
+        &:nth-child(2) {
+          width: 39%;
+          @include mq() {
+            width: 36%;
+          }
+          .weatherInfo {
+            &_date {
+              @include fontSize(24, 16);
+            }
+            &_max,
+            &_min {
+              @include fontSize(20, 12);
+            }
+          }
+        }
+      }
+    }
+    &.-jma {
+      .weatherInfo {
+        width: 28%;
+        &_date {
+          @include fontSize(28, 16);
+        }
+        &:nth-child(1) {
+          .weatherInfo_max,
+          .weatherInfo_min {
+            display: none;
+          }
+        }
+      }
+      p {
+        @include fontSize(14, 10);
+        padding: 1em;
+      }
+    }
+    &.-openWeather {
+      .weatherInfo {
+        width: 75%;
+        &_code {
+          span {
+            @include fontSize(28, 16);
+          }
+        }
+        &_max,
+        &_min {
+          @include fontSize(24, 14);
+        }
+      }
+    }
+  }
+  .weatherInfo {
+    display: flex;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    width: 16%;
+    font-family: $fontEn;
+    &:nth-child(1),
+    &:nth-child(2) {
+      .weatherInfo_date {
+        position: relative;
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 95%;
+          font-size: 60%;
+          color: #fff;
+          content: "today";
+          -webkit-text-stroke: 1px $colorText;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .weatherInfo_date {
+        &::before {
+          content: "tomorrow";
+        }
+      }
+    }
+
+    &_date {
+      @include fontSize(18, 14);
+    }
+    &_code {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      margin: 0 auto;
+      margin-top: 0.5rem;
+      border: 1px solid #aaa;
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        color: #aaa;
+        text-align: center;
+        content: "ここに天気のアイコン";
+        transform: translate(-50%, -50%);
+      }
+      span {
+        @include fontSize(12, 10);
+        position: absolute;
+        bottom: 0.5em;
+        left: 0;
+        display: block;
+        width: 100%;
+      }
+    }
+    &_max,
+    &_min {
+      margin-top: 0.2em;
+      font-size: 1.4rem;
+      @include fontSize(14, 10);
+      span {
+        font-size: 70%;
+      }
+    }
+    &_min {
+      &::before {
+        display: inline-block;
+        padding: 0 0.2em;
+        content: "-";
+      }
     }
   }
 }

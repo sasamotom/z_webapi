@@ -1,0 +1,48 @@
+@use "../../../../node_modules/swiper/swiper-bundle.min.css";
+@use "../abstracts" as *;
+
+.swiper {
+  height: 100%;
+  padding: 1.5em 2em;
+}
+.swiper-slide {
+  height: 100%;
+  overflow-y: auto;
+  // border: 1px solid #000;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 48%;
+  top: 0;
+  width: 4rem;
+  height: 100%;
+  margin-top: 0;
+  transform: none;
+  &::after {
+    position: relative;
+    display: block;
+    width: 2.8rem;
+    height: 2.8rem;
+    content: "";
+    border-top: 4px solid $colorText;
+    border-right: 4px solid $colorText;
+  }
+  &.swiper-button-disabled {
+    opacity: 0;
+  }
+}
+.swiper-button-prev {
+  left: 0;
+  &::after {
+    left: 1.5rem;
+    transform: rotate(-135deg);
+  }
+}
+.swiper-button-next {
+  right: 0;
+  &::after {
+    right: 1.5rem;
+    transform: rotate(45deg);
+  }
+}

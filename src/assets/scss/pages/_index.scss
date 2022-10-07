@@ -220,6 +220,9 @@ html {
     }
   }
 }
+input[type="text"] {
+  border: 4px solid $colorText;
+}
 
 // ここから各APIに対応したスタイル
 .secWeather {
@@ -362,6 +365,130 @@ html {
         display: inline-block;
         padding: 0 0.2em;
         content: "-";
+      }
+    }
+  }
+}
+
+.secWiki {
+  .apiContainer_inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .fixedContainer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 3rem 4rem;
+    .apiContainer_ttl {
+      margin-bottom: 0.8em;
+    }
+  }
+  .swiper {
+    width: 100%;
+  }
+  .inputArea {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    label {
+      @include fontSize(18, 14);
+      margin-right: 0.8rem;
+      font-family: $fontEn;
+    }
+    input {
+      display: inline-block;
+      max-width: 80rem;
+      padding: 0.2em;
+      background: #fff;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0;
+      margin-top: 0;
+      margin-left: 0.8rem;
+      > * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+    }
+  }
+  .resultKindName {
+    @include fontSize(26, 20);
+    font-weight: 900;
+  }
+  .resultArea {
+    margin-top: 2rem;
+    &_key {
+      @include fontSize(22, 18);
+      font-weight: 900;
+    }
+    .wikiResultArticle {
+      * {
+        margin-top: 1em;
+        line-height: 1.5;
+      }
+      span {
+        font-weight: inherit;
+      }
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-size: 120%;
+        font-weight: 900;
+      }
+      dl {
+        dt {
+          font-weight: 900;
+        }
+        dd {
+          margin-top: 0.2em;
+        }
+      }
+      ul {
+        li {
+          margin-top: 0.2em;
+          &::before {
+            content: "・";
+          }
+          ul {
+            padding-left: 1em;
+            margin-top: 0.2em;
+          }
+        }
+      }
+      a {
+        color: #888;
+        text-decoration: underline;
+      }
+    }
+    .wikiResultList {
+      > li {
+        padding: 1em 0;
+        dt {
+          @include fontSize(16, 14);
+          font-weight: 900;
+        }
+        dd {
+          margin-top: 0.2em;
+          @include fontSize(14, 12);
+          line-height: 1.3;
+        }
+        + li {
+          border-top: 1px solid $color04;
+        }
+      }
+      .searchmatch {
+        display: inline-block;
+        padding: 0.1em 0;
+        font-weight: 900;
+        background: rgba($color04, 0.3);
       }
     }
   }

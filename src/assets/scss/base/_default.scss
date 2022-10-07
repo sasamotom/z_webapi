@@ -49,3 +49,39 @@ a {
   text-decoration: none;
   transition: 0.3s;
 }
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+textarea {
+  resize: vertical;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  display: none;
+}
+input[type="submit"],
+input[type="button"],
+label,
+button,
+select {
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+
+input[disabled],
+button[disabled] {
+  opacity: 0.3;
+}

@@ -8,6 +8,7 @@ import { SwiperOperate } from './class/SwiperOperate';
 
 // APIに関するもの
 import { Weather } from './apiClass/Weather';
+import { Wikipedia } from './apiClass/Wikipedia';
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -27,4 +28,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // API処理
   new Weather();
+  new Wikipedia();
 });

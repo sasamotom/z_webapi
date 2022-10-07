@@ -1,0 +1,48 @@
+section.secCard.secWiki
+  h2.secCard_ttl Wikipedia
+  .textContainer
+    .textContainer_inner
+      h3.textContainer_ttl Wikipedia API (MediaWiki API)
+      p MediaWikiというものがWikipediaを動かしているとのこと。<br>そのため、MediaWikiのAPIを使用することでWikipediaの情報が取得できる。
+      p パラメータが複雑であるが、その分さまざまなデータが取得できる。<br>データの有無もわかりやすい。
+      div.btn.modalTrigger: span.btn_txt MORE
+        .modalContent
+          h3.modalTtl Wikipedia API
+          p 色々なデータを取得できることもあり、パラメータが複雑である。<br>取得するデータは元からタグが入っている状態となっている。（タグが不要だったら削除する必要あり）
+          p
+            a(href="https://yumegori.com/javascript-wikipedia-api", target="_blank", rel="noopener noreferrer") 参考ページ
+            br
+            a(href="https://1-lifengine.com/wikipedia_api", target="_blank", rel="noopener noreferrer") 参考ページ
+            br
+            a(href="https://qiita.com/yubessy/items/16d2a074be84ee67c01f", target="_blank", rel="noopener noreferrer") パラメータ
+            br
+            a(href="https://www.mediawiki.org/wiki/API:Revisions#JavaScript", target="_blank", rel="noopener noreferrer") 詳細・仕様
+  .apiContainer
+    .apiContainer_inner
+      .fixedContainer
+        h3.apiContainer_ttl Wikipedia API
+        .inputArea
+          label(for="wikiTxt") KEYWORD
+          .row
+            input#wikiTxt(type="text")
+            button#wikiBtn.btn.-reversal(type="button"): span.btn_txt SEARCH
+      .swiper
+        .swiper-wrapper
+          .swiper-slide
+            h4.resultKindName 検索キーで一致したページの記事概要
+            .resultArea#wikiArticle
+              h5.resultArea_key#wikiResultArticleKey
+              .wikiResultArticle#wikiResultArticle
+
+          .swiper-slide
+            h4.resultKindName 検索キーでの検索結果一覧
+            .resultArea#wikiResult
+              h5.resultArea_key#wikiResulListtKey
+              ul.wikiResultList#wikiResultList
+                //- li
+                //-   a(href="https://ja.wikipedia.org/?curid=2347314")
+                //-     dl
+                //-       dt Superfly
+                //-       dd <span class="searchmatch">Superfly</span>（スーパーフライ）は、越智志帆（おちしほ）がボーカルを務める、日本の音楽ユニット。所属レーベルはユニバーサルシグマ、マネジメントは44 CARAT。 2004年、ボーカルの越智志帆とギターの多保孝一により愛媛県松山市で結成された。2007年にシングル『ハロー・ハロー』でメジャーデビュ
+        .swiper-button-prev
+        .swiper-button-next

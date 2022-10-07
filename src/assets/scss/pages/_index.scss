@@ -67,6 +67,16 @@ html {
     height: auto;
     padding: 5rem 5%;
   }
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
   > * {
     flex-grow: 0;
     max-width: 700px;
@@ -145,6 +155,7 @@ html {
     font-size: min(20vh, 14vw);
     color: #fff;
     letter-spacing: -0.015em;
+    transition: 1s 0.5s text-shadow;
     -webkit-text-stroke: 4px $colorText;
     @include mq() {
       position: static;
@@ -153,9 +164,11 @@ html {
   }
   .textContainer {
     position: relative;
+    top: 10vh;
     z-index: 3;
     width: 40%;
     height: 100%;
+    transition: 0.5s top;
     @include mq() {
       width: 100%;
       margin-top: 4rem;
@@ -179,10 +192,12 @@ html {
   }
   .apiContainer {
     position: relative;
+    top: 10vh;
     width: 58%;
     aspect-ratio: 1;
     background: #fff;
     border: 4px solid $colorText;
+    transition: 0.5s top, 1s 0.5s box-shadow;
     @include mq() {
       width: 100%;
       margin-top: 3rem;
@@ -219,7 +234,63 @@ html {
       }
     }
   }
+  // アニメーション
+  &.-active {
+    &::before {
+      animation: fromBottom 0.5s;
+    }
+    .secCard_ttl {
+      animation: fromRightForTitle 0.5s;
+    }
+    .textContainer {
+      top: 0;
+    }
+    .apiContainer {
+      top: 0;
+      animation: fromRight 0.5s;
+      &::before {
+        animation: fromRight_Reversal 0.5s;
+      }
+    }
+  }
 }
+
+@keyframes fromBottom {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes fromRight {
+  0% {
+    left: 200px;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes fromRight_Reversal {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes fromRightForTitle {
+  0% {
+    transform: translateX(100vw);
+  }
+  40% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: 0;
+  }
+}
+
 input[type="text"] {
   border: 4px solid $colorText;
 }
